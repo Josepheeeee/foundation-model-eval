@@ -29,6 +29,13 @@ bash scripts/linux/install_infer.sh
 bash scripts/linux/download_data.sh
 ```
 
+先做提取一致性核对（需要 `external/lm-evaluation-harness` 固定源码）：
+
+```bash
+python scripts/fetch_references.py lm-evaluation-harness
+python scripts/check_upstream_gsm8k.py --answers data/raw/gsm8k_test.jsonl
+```
+
 验收：
 - `data/manifests/gsm8k.json`：train 7473、test 1319；
 - `data/processed/gsm8k/`：train 6973、dev 500、test 1319，无重叠；

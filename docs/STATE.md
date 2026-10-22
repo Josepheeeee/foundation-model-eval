@@ -21,6 +21,7 @@
 - 污染检查：精确 prompt hash、5-word shingle 近重复（Jaccard≥0.8）、同源 group 跨划分检查；明确“只检查可见数据”。
 - 选样：长度分层、B1 随机、B2 层内错误加权、Efraimidis-Spirakis 无放回抽样、同层交换匹配 Token、B2 全池诊断门禁、重叠与预算记录。
 - 评分：GSM8K/SVAMP 数值、MMLU-Pro 选项、BBH 任务 exact match、IFEval 规则（unsupported 单独计）、HumanEval+ 受限执行、RULER 数值。
+- 提取核对脚本：读取固定 lm-eval 上游 GSM8K 任务的 `regex_pattern`，对每条本地 gold answer 与我们的提取逐样本比较；真实数据下载后执行。
 - 代码执行：Docker 默认（无网络、512m、pids 64、cap-drop、非 root、只读挂载）；Windows local 模式默认拒绝，需显式 `FOUNDATION_ALLOW_LOCAL_CODE=1`。
 - 报告：每任务原生指标、Wilson 区间、状态对账、成本、失败案例、协议/数据/端点；无合成分数。
 - 统计：B1/B2 三种子配对、样本级 Bootstrap、每种子差值、协议/数据/种子完整性拒绝。
@@ -46,7 +47,7 @@
 
 ## 仓库
 
-公开仓库：[Josepheeeee/foundation-model-eval](https://github.com/Josepheeeee/foundation-model-eval)（`main`，首个提交 `3a1480d`）。提交前已做凭证样式扫描；runs、数据、权重和 `.env` 不进入 Git。
+公开仓库：[Josepheeeee/foundation-model-eval](https://github.com/Josepheeeee/foundation-model-eval)（`main`）。提交前已做凭证样式扫描；runs、数据、权重和 `.env` 不进入 Git。
 
 ## 当前限制
 

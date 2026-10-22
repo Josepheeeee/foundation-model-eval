@@ -90,7 +90,12 @@ bash scripts/linux/install_infer.sh    # 独立 .venv-infer
 bash scripts/linux/download_data.sh    # 数据指纹写入 data/manifests
 ```
 
-数据下载后核对 `data/manifests/gsm8k.json` 的 fingerprint。GSM8K 官方 train 7473 题按 `SHA256("gsm8k-dev-v1:"+sample_id)` 排序，前 500 为 dev，余 6973 为训练池；官方 test 1319 只用于最终评测。
+数据下载后核对 `data/manifests/gsm8k.json` 的 fingerprint。GSM8K 官方 train 7473 题按 `SHA256("gsm8k-dev-v1:"+sample_id)` 排序，前 500 为 dev，余 6973 为训练池；官方 test 1319 只用于最终评测。再用固定上游源码做提取逐样本核对：
+
+```bash
+python scripts/fetch_references.py lm-evaluation-harness
+python scripts/check_upstream_gsm8k.py --answers data/raw/gsm8k_test.jsonl
+```
 
 ### 2. 基座诊断与 B1/B2 选样
 
