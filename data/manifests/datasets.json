@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-22",
+  "status": "planned; revisions and fingerprints are recorded by prepare/download on the H20 host",
+  "policy": "Do not freeze or test a task whose resolved dataset fingerprint is absent from the run manifest.",
+  "tasks": {
+    "gsm8k": {
+      "dataset_id": "openai/gsm8k",
+      "revision": "record-at-prepare",
+      "official_train": 7473,
+      "official_test": 1319,
+      "dev_holdout": 500,
+      "train_pool": 6973,
+      "local_files": ["data/raw/gsm8k_train.jsonl", "data/raw/gsm8k_test.jsonl", "data/processed/gsm8k/train.jsonl", "data/processed/gsm8k/dev.jsonl"],
+      "role": "primary",
+      "metric": "exact_match_final_answer"
+    },
+    "svamp": {
+      "dataset_id": "ChilleD/SVAMP",
+      "revision": "record-at-prepare",
+      "local_files": ["data/processed/svamp/test.jsonl"],
+      "role": "transfer_only",
+      "metric": "exact_match_final_answer"
+    },
+    "mmlu_pro": {
+      "dataset_id": "TIGER-Lab/MMLU-Pro",
+      "revision": "record-at-prepare",
+      "local_files": ["data/processed/mmlu_pro/test.jsonl"],
+      "role": "auxiliary",
+      "metric": "exact_match_option"
+    },
+    "bbh": {
+      "dataset_id": "lukaemon/bbh",
+      "revision": "record-at-prepare",
+      "local_files": ["data/processed/bbh/test.jsonl"],
+      "role": "auxiliary",
+      "metric": "task_exact_match"
+    },
+    "ifeval": {
+      "dataset_id": "google/IFEval",
+      "revision": "record-at-prepare",
+      "local_files": ["data/processed/ifeval/test.jsonl"],
+      "role": "auxiliary",
+      "metric": "instruction_level_strict_accuracy"
+    },
+    "humaneval_plus": {
+      "dataset_id": "evalplus/humanevalplus",
+      "revision": "record-at-prepare",
+      "local_files": ["data/processed/humaneval_plus/test.jsonl"],
+      "role": "auxiliary",
+      "metric": "pass_at_1_functional"
+    },
+    "ruler": {
+      "dataset_id": "nvidia/RULER (task definitions)",
+      "revision": "local generator 2026-10-22",
+      "lengths": [4096, 8192, 16384],
+      "tasks": ["niah_single_1", "niah_multikey_1", "vt"],
+      "samples_per_cell": 50,
+      "seed": 2026,
+      "local_files": ["data/processed/ruler/<length>_<task>.jsonl"],
+      "role": "diagnostic",
+      "metric": "exact_match_needle",
+      "note": "Synthetic fixed-length diagnostic; not an official RULER leaderboard submission."
+    }
+  }
+}

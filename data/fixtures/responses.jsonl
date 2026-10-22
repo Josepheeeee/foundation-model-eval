@@ -1,0 +1,22 @@
+{"sample_id": "gsm8k-001", "text": "In April Natalia sold 48 clips.\nIn May she sold half: 24 clips.\nTotal: 48 + 24 = 72.\n#### 72"}
+{"sample_id": "gsm8k-002", "text": "She worked 50 minutes.\n#### 11"}
+{"sample_id": "gsm8k-003", "text": "Betty has 50. Parents give 15, grandparents give 30.\nTotal 95, so she needs 5.\n#### 5"}
+{"sample_id": "gsm8k-004", "text": "She uses 3 + 4 = 7 eggs.\nRemainder 16 - 7 = 9 eggs.\n9 * 2 = 18.\n#### 18"}
+{"sample_id": "gsm8k-005", "text": "White is half of 2, which is 1.\nTotal 2 + 1 = 3.\n#### 3"}
+{"sample_id": "gsm8k-006", "text": "Charleston has 80 and Toulouse has 160.\n#### 250"}
+{"sample_id": "gsm8k-007", "text": "Plums left: 32 * 3/4 = 24.\nPeaches left: 42 * 2/3 = 28.\nTotal 24 + 28 = 52.\n#### 52"}
+{"sample_id": "gsm8k-008", "text": "Rate 1200 / 8 = 150 per hour.\n150 * 5 = 750.\n#### 750"}
+{"sample_id": "mmlu-001", "text": "B"}
+{"sample_id": "mmlu-002", "text": "A"}
+{"sample_id": "mmlu-003", "text": "C"}
+{"sample_id": "bbh-001", "text": "ANSWER: no"}
+{"sample_id": "bbh-002", "text": "ANSWER: B"}
+{"sample_id": "bbh-003", "text": "ANSWER: 31"}
+{"sample_id": "ifeval-001", "text": "The sea is blue. It moves with the wind."}
+{"sample_id": "ifeval-002", "text": "{\"ok\": true}"}
+{"sample_id": "ifeval-003", "text": "Rain falls softly on the roof and runs down the glass while the street shines."}
+{"sample_id": "ifeval-004", "text": "anything"}
+{"sample_id": "humaneval-001", "text": "```python\ndef add_one(x):\n    return x + 1\n```"}
+{"sample_id": "humaneval-002", "text": "```python\ndef add_one(x):\n    return x - 1\n```"}
+{"sample_id": "ruler-001", "text": "7391"}
+{"sample_id": "ruler-002", "text": "The answer is 7000."}

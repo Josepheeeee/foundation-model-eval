@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "foundation-model-eval"
+version = "0.1.0"
+description = "Reliable foundation-model measurement and evaluation-driven LightSFT data selection"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = "MIT"
+dependencies = ["pydantic>=2.10,<3", "PyYAML>=6,<7", "httpx>=0.28,<1", "numpy>=2,<3", "matplotlib>=3.9,<4", "python-dotenv>=1,<2"]
+
+[project.optional-dependencies]
+data = ["datasets>=3,<5", "transformers>=4.46,<6", "huggingface-hub>=0.30,<2"]
+dev = ["pytest>=8,<10"]
+
+[project.scripts]
+foundation-eval = "foundation_eval.run:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

@@ -1,0 +1,35 @@
+schema_version: 1
+# Endpoint fields come from .env. A model label is the experimental identity;
+# the served model id is recorded in every run manifest.
+endpoint_role: TARGET
+models:
+  B0:
+    description: original Qwen3-8B-Base, no training
+    base_model: Qwen/Qwen3-8B-Base
+    family: 8b
+    weights: null
+  B1:
+    description: length-stratified random 2,048 samples
+    base_model: Qwen/Qwen3-8B-Base
+    family: 8b
+    weights: outputs/qwen3-8b-b1-seed{seed}
+  B2:
+    description: base-error-weighted 2,048 samples
+    base_model: Qwen/Qwen3-8B-Base
+    family: 8b
+    weights: outputs/qwen3-8b-b2-seed{seed}
+  B0_4b:
+    description: Qwen3-4B-Base replication, no training
+    base_model: Qwen/Qwen3-4B-Base
+    family: 4b
+    weights: null
+  B1_4b:
+    description: Qwen3-4B-Base replication of B1
+    base_model: Qwen/Qwen3-4B-Base
+    family: 4b
+    weights: outputs/qwen3-4b-b1-seed{seed}
+  B2_4b:
+    description: Qwen3-4B-Base replication of B2
+    base_model: Qwen/Qwen3-4B-Base
+    family: 4b
+    weights: outputs/qwen3-4b-b2-seed{seed}

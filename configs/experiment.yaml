@@ -1,0 +1,55 @@
+schema_version: 1
+project: foundation-model-eval
+tasks_file: configs/tasks.yaml
+models_file: configs/models.yaml
+protocols: [completion, chat]
+primary_protocol: completion
+generation:
+  temperature: 0.0
+  top_p: 1.0
+  max_new_tokens: 1024
+  seed: 2026
+  stop: []
+dev_count: 500
+dev_salt: gsm8k-dev-v1
+selection_count: 2048
+seeds: [42, 43, 44]
+length_bins: 10
+token_tolerance: 0.01
+b1:
+  name: length-stratified-random
+  wrong_weight: 1
+  correct_weight: 1
+b2:
+  name: base-error-weighted
+  wrong_weight: 3
+  correct_weight: 1
+sft:
+  base_model: Qwen/Qwen3-8B-Base
+  replication_model: Qwen/Qwen3-4B-Base
+  template: qwen3
+  lora_rank: 32
+  lora_alpha: 64
+  lora_dropout: 0.05
+  learning_rate: 0.0001
+  global_batch: 16
+  gpus: 4
+  per_device_batch: 1
+  gradient_accumulation: 4
+  cutoff_len: 4096
+  epochs: 1
+  bf16: true
+budget:
+  max_calls: 0
+  max_total_tokens: 0
+  price_input_per_million: null
+  price_output_per_million: null
+  currency: USD
+  note: Fill before a remote/commercial run; 0 means local-only and is refused for remote endpoints.
+bootstrap_samples: 10000
+bootstrap_seed: 2026
+ruler:
+  lengths: [4096, 8192, 16384]
+  tasks: [niah_single_1, niah_multikey_1, vt]
+  samples_per_cell: 50
+  seed: 2026

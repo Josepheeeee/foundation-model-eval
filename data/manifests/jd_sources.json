@@ -1,0 +1,860 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-22T07:21:07.958044+00:00",
+  "scope": {
+    "companies_checked": 30,
+    "official_records_retrieved": 74,
+    "official_complete_jds_selected": 70,
+    "companies_with_selected_jd": 19,
+    "companies_without_selected_jd": 11,
+    "screenshots": 11,
+    "statement": "70条去重官网完整正文，来自19家公司；不声称穷尽30家公司的全部职位。"
+  },
+  "method": {
+    "selection": "核心职责包含模型能力/指标定义、Benchmark、评分算法、偏差校准、受控实验或评测指导训练。",
+    "inclusion": "标题含算法也可能排除；标题为工程师但明确研发评测方法可纳入；混合岗位只分析算法研究部分。",
+    "exclusion": "纯Infra、产品、运营、人工测评执行与测试执行不进入主分析。",
+    "dedup_keys": [
+      "company + official job id",
+      "body_sha256",
+      "same-role campus/social merge"
+    ],
+    "query_template": "{company} 大模型 评测 算法 研究 实习 校招 社招",
+    "retrieval_window": "2026-10-22"
+  },
+  "dedup": {
+    "input_records": 74,
+    "selected_records": 70,
+    "removed_records": 4,
+    "duplicate_urls": 0,
+    "duplicate_body_hashes": 4,
+    "merged_same_role": [
+      "蚂蚁集团-260826011707588 -> JD-53",
+      "蚂蚁集团-26032609330453 -> JD-57",
+      "蚂蚁集团-26051209984609 -> JD-60",
+      "米哈游-9690 -> JD-62"
+    ],
+    "excluded_records": [
+      {
+        "record_id": "蚂蚁集团-260826011707588",
+        "company": "蚂蚁集团",
+        "title": "【蚂蚁星】多模态理解与生成评测算法研究-27届",
+        "reason": "与JD-53同一角色的校招版本重复，合并到JD-53。",
+        "body_sha256": "fe6e443fce0c2cb5158d50333bd1f4b078c9b41360cf34b1188a9e4dd306e8c3"
+      },
+      {
+        "record_id": "蚂蚁集团-26032609330453",
+        "company": "蚂蚁集团",
+        "title": "【蚂蚁星】AI工程师-大模型评测（实习）",
+        "reason": "与JD-57同一角色的实习版本重复，合并到JD-57。",
+        "body_sha256": "afe5fb23ddbb9dc543426f640ae0928c39ba1d65dbaa6d76af36e3e7596f11b4"
+      },
+      {
+        "record_id": "蚂蚁集团-26051209984609",
+        "company": "蚂蚁集团",
+        "title": "【蚂蚁星】算法工程师-评测方向-大安全-27届",
+        "reason": "与JD-60同一角色的校招版本重复，合并到JD-60。",
+        "body_sha256": "0ce743f3c8ff30754dc1e57b96b914e26605108d62da0cc2b9759a8e22c89439"
+      },
+      {
+        "record_id": "米哈游-9690",
+        "company": "米哈游",
+        "title": "LLM Evaluation算法研究员",
+        "reason": "与JD-62同一角色的社招版本重复，合并到JD-62。",
+        "body_sha256": "eea070509a3e728bc520fc7fec5288caa564318cb870f7f619e69ef65e415b6e"
+      }
+    ],
+    "other_excluded_candidates": [
+      {
+        "company": "阿里巴巴",
+        "ref": "199909720005",
+        "title": "大模型评测实习生（通用方向）",
+        "reason": "取得完整正文但算法属性待核验；未进入70条主样本。"
+      },
+      {
+        "company": "月之暗面",
+        "ref": "careers.kimi.com",
+        "title": "Eval岗位",
+        "reason": "职责为工程/产品方向，非评测算法研究。"
+      },
+      {
+        "company": "用户截图",
+        "ref": "SC-01/SC-02/SC-03/SC-04/SC-05-10/SC-06-07/SC-08/SC-09/SC-11",
+        "title": "截图补充材料",
+        "reason": "单独标注来源与截断，不并入官网完整样本统计。"
+      }
+    ]
+  },
+  "companies": [
+    {
+      "company": "字节跳动",
+      "portal": "https://jobs.bytedance.com/experienced/",
+      "search_query": "字节跳动 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "jobs.bytedance.com",
+        "seed.bytedance.com"
+      ],
+      "search_first_url": "https://seed.bytedance.com/zh/blog/bytedance-seed-2027-foundation-model-campus-recruitment-is-now-open-internships-included",
+      "search_result_chars": 14715,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_e431f03540e4a356.html",
+      "portal_sha256": "76d2e7fe8f63607cd2d5b315f748fe4d09b1af7a377be449155f99c7a385c3fe",
+      "coverage": "covered",
+      "complete_official_records": 1,
+      "selected_jd_ids": [
+        "JD-07"
+      ],
+      "notes": "1条完整评测JD；视频/图片创作评估方向。",
+      "recheck": "",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "腾讯",
+      "portal": "https://careers.tencent.com/",
+      "search_query": "腾讯 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "careers.tencent.com",
+        "join.qq.com"
+      ],
+      "search_first_url": "https://careers.tencent.com/jobdesc.html?postId=2109847133833310208",
+      "search_result_chars": 13630,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_6f5c1fbd8bd2f99e.html",
+      "portal_sha256": "ebf89d7e97795d14ab857865261ef2ca3b486174b62e29c7281be25e382993dd",
+      "coverage": "covered",
+      "complete_official_records": 6,
+      "selected_jd_ids": [
+        "JD-01",
+        "JD-02",
+        "JD-03",
+        "JD-04",
+        "JD-05",
+        "JD-06"
+      ],
+      "notes": "6条完整JD；覆盖混元、企微、小程序、语音与具身评测。",
+      "recheck": "",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "阿里巴巴",
+      "portal": "https://talent.alibaba.com/",
+      "search_query": "阿里巴巴 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "talent.alibaba.com",
+        "campus-talent.alibaba.com"
+      ],
+      "search_first_url": "https://campus-talent.alibaba.com/campus/position/199909720005",
+      "search_result_chars": 15332,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_cc47b72ca94bdb0a.html",
+      "portal_sha256": "3e237a2624ef5f4570f46dc93748cc14660a1adb4f9befdc6877f43cca0d973c",
+      "coverage": "covered",
+      "complete_official_records": 15,
+      "selected_jd_ids": [
+        "JD-26",
+        "JD-27",
+        "JD-28",
+        "JD-29",
+        "JD-30",
+        "JD-31",
+        "JD-32",
+        "JD-33",
+        "JD-34",
+        "JD-35",
+        "JD-36",
+        "JD-37",
+        "JD-38",
+        "JD-39",
+        "JD-40"
+      ],
+      "notes": "15条完整JD；含Qwen基础模型、预训练、Agentic、安全与数据评测。",
+      "recheck": "",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "百度",
+      "portal": "https://talent.baidu.com/",
+      "search_query": "百度 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "talent.baidu.com"
+      ],
+      "search_first_url": "https://talent.baidu.com/jobs/detail/INTERN/6c5c9660-7827-469a-9338-907e1f022426",
+      "search_result_chars": 13779,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_3a6085ea1073d03e.html",
+      "portal_sha256": "6f8441945ed41171af69fc5a0253c599ddbe72e66da41842653bd00d1d9d17af",
+      "coverage": "covered",
+      "complete_official_records": 3,
+      "selected_jd_ids": [
+        "JD-08",
+        "JD-09",
+        "JD-10"
+      ],
+      "notes": "3条完整JD；含智能标注与智能评测。",
+      "recheck": "",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "美团",
+      "portal": "https://zhaopin.meituan.com/",
+      "search_query": "美团 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "zhaopin.meituan.com"
+      ],
+      "search_first_url": "https://zhaopin.meituan.com/web/position/detail?jobUnionId=3383858111&source=interviewEmail",
+      "search_result_chars": 14282,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_aad029e35e72352e.html",
+      "portal_sha256": "93b44a8ba8b20ba6eee9c37a82b8fa0bd17bdc98bd4df839c682f52734613966",
+      "coverage": "covered",
+      "complete_official_records": 2,
+      "selected_jd_ids": [
+        "JD-15",
+        "JD-16"
+      ],
+      "notes": "2条完整JD；基座研究分析与开放域智能体评测。",
+      "recheck": "",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "京东",
+      "portal": "https://zhaopin.jd.com/",
+      "search_query": "京东 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "zhaopin.jd.com",
+        "campus.jd.com"
+      ],
+      "search_first_url": "https://zhaopin.jd.com/web/job-info-detail?requementId=225242",
+      "search_result_chars": 13536,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_c4ceddd90f360803.html",
+      "portal_sha256": "69bb0c3c46767bde5eb5eb050868e478a8d7d861ea6f1f3b3fd4dce902faad4c",
+      "coverage": "covered",
+      "complete_official_records": 1,
+      "selected_jd_ids": [
+        "JD-18"
+      ],
+      "notes": "1条完整JD；具身大模型评测研究。",
+      "recheck": "",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "快手",
+      "portal": "https://zhaopin.kuaishou.cn/",
+      "search_query": "快手 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "zhaopin.kuaishou.cn",
+        "campus.kuaishou.cn"
+      ],
+      "search_first_url": "https://zhaopin.kuaishou.cn/recruit/e/accept-success.html",
+      "search_result_chars": 288,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_73b389ce3ef78c6d.html",
+      "portal_sha256": "bd8bc2f323c1eb8103035a2dbf8906e86300599ff0425b6d4ec9ae788c6b6210",
+      "coverage": "missing",
+      "complete_official_records": 0,
+      "selected_jd_ids": [],
+      "notes": "官方详情返回40404，只取得招聘首页；未取得合格评测JD全文。",
+      "recheck": "needs_recheck",
+      "recheck_sources": [
+        "https://jy.cumtb.edu.cn/Zhaopin/xiaozhao.html?type=1&id=6761632a-414c-01cd-4588-f1e0ad220942",
+        "https://cug.91wllm.cn/campus/view/id/1005664"
+      ],
+      "recheck_result": "仅检索到校招公告/落地页，仍无官方评测JD完整正文；保留为缺失。",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "网易",
+      "portal": "https://hr.163.com/",
+      "search_query": "网易 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "hr.163.com",
+        "campus.163.com"
+      ],
+      "search_first_url": null,
+      "search_result_chars": 67,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_2eee20802ffecf2e.html",
+      "portal_sha256": "2f28c65403aa6ee0e505f663d9d9b2591005aeec84130e6413b1756a3235cfdb",
+      "coverage": "covered",
+      "complete_official_records": 2,
+      "selected_jd_ids": [
+        "JD-23",
+        "JD-24"
+      ],
+      "notes": "2条完整JD；AI应用评测与Agent安全。",
+      "recheck": "",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "蚂蚁集团",
+      "portal": "https://talent.antgroup.com/",
+      "search_query": "蚂蚁集团 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "talent.antgroup.com"
+      ],
+      "search_first_url": null,
+      "search_result_chars": 67,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_97de645d2995f26f.html",
+      "portal_sha256": "4da9965bb9316b3280c67eb24a37ebb675ff0c0f42710932f6f1a8a3c4b90929",
+      "coverage": "covered",
+      "complete_official_records": 20,
+      "selected_jd_ids": [
+        "JD-41",
+        "JD-42",
+        "JD-43",
+        "JD-44",
+        "JD-45",
+        "JD-46",
+        "JD-47",
+        "JD-48",
+        "JD-49",
+        "JD-50",
+        "JD-51",
+        "JD-52",
+        "JD-53",
+        "JD-54",
+        "JD-55",
+        "JD-56",
+        "JD-57",
+        "JD-58",
+        "JD-59",
+        "JD-60"
+      ],
+      "notes": "20条完整JD；从23条完整正文中排除3条同角色校招/实习重复（见excluded）。",
+      "recheck": "",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "滴滴",
+      "portal": "https://talent.didiglobal.com/",
+      "search_query": "滴滴 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "talent.didiglobal.com"
+      ],
+      "search_first_url": "https://talent.didiglobal.com/social/jobDetail?jdId=48672",
+      "search_result_chars": 13565,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_a9b44d782dfc7594.html",
+      "portal_sha256": "6577d7e8911d4906bb83e0041ff0c4a78aee82d0955fa13d9ff87abaf6dd1f36",
+      "coverage": "covered",
+      "complete_official_records": 1,
+      "selected_jd_ids": [
+        "JD-66"
+      ],
+      "notes": "1条完整JD；通用Agent评测链路是职责之一。",
+      "recheck": "",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "拼多多",
+      "portal": "https://careers.pddglobalhr.com/",
+      "search_query": "拼多多 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "careers.pddglobalhr.com"
+      ],
+      "search_first_url": "https://careers.pddglobalhr.com/campus/grad/detail?t=KUC9ytacYy",
+      "search_result_chars": 13734,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_b5515834d8d7f0f8.html",
+      "portal_sha256": "469f7102a26d1e64d6b21ec87c0e9fc3bfb57426d35ba026797c869bb97dc285",
+      "coverage": "missing",
+      "complete_official_records": 0,
+      "selected_jd_ids": [],
+      "notes": "检索到的完整JD为AI Infra，非评测算法；排除。",
+      "recheck": "verified_exclusion",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "小红书",
+      "portal": "https://job.xiaohongshu.com/",
+      "search_query": "小红书 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "job.xiaohongshu.com"
+      ],
+      "search_first_url": "https://job.xiaohongshu.com/campus/intern/position/22599",
+      "search_result_chars": 13773,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_53c28461d6e8c85f.html",
+      "portal_sha256": "f1f30b11ea073ee8875ae16f51235a6e7c0acb9849f809eeb607a4047c5c1980",
+      "coverage": "covered",
+      "complete_official_records": 3,
+      "selected_jd_ids": [
+        "JD-12",
+        "JD-13",
+        "JD-14"
+      ],
+      "notes": "3条完整JD；预训练评估与后训练泛化。",
+      "recheck": "",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "哔哩哔哩",
+      "portal": "https://jobs.bilibili.com/",
+      "search_query": "哔哩哔哩 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "jobs.bilibili.com"
+      ],
+      "search_first_url": "https://jobs.bilibili.com/campus/positions/29836?type=0",
+      "search_result_chars": 11886,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_d14da1069c36d00b.html",
+      "portal_sha256": "a11e886ebbd8898cc771a1f6da47f4a8eae45537fee1c3598e04bad630cd78f7",
+      "coverage": "missing",
+      "complete_official_records": 0,
+      "selected_jd_ids": [],
+      "notes": "只有LLM算法实习JD，评测工具是附带职责；非评测核心，排除。",
+      "recheck": "verified_exclusion",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "携程",
+      "portal": "https://careers.ctrip.com/",
+      "search_query": "携程 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "careers.ctrip.com",
+        "campus.ctrip.com"
+      ],
+      "search_first_url": null,
+      "search_result_chars": 67,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_5c4ca4b306995dca.html",
+      "portal_sha256": "98220e28d05dd9518d15cc0c2827fc9fa0e4c8bccc93e9afd1c6679e44649f1a",
+      "coverage": "missing",
+      "complete_official_records": 0,
+      "selected_jd_ids": [],
+      "notes": "检索无结果；未取得官网评测JD。",
+      "recheck": "needs_recheck",
+      "recheck_sources": [
+        "https://www.mianshima.com/job/10/MJ036648"
+      ],
+      "recheck_result": "只检索到算法实习（大模型与机器翻译）转载，非评测岗位；仍无合格评测JD。",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "米哈游",
+      "portal": "https://careers.mihoyo.com/",
+      "search_query": "米哈游 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "careers.mihoyo.com",
+        "mihoyo.com"
+      ],
+      "search_first_url": "https://campus.mihoyo.com/?channelToken=6dd65287-c87a-401d-97f1-5c02595eb57c",
+      "search_result_chars": 14614,
+      "portal_http_status": null,
+      "portal_snapshot": null,
+      "portal_sha256": null,
+      "coverage": "covered",
+      "complete_official_records": 4,
+      "selected_jd_ids": [
+        "JD-61",
+        "JD-62",
+        "JD-63",
+        "JD-64"
+      ],
+      "notes": "4条完整JD；从5条中合并1条重复社招角色（9690 -> JD-62）。",
+      "recheck": "",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "360",
+      "portal": "https://hr.360.cn/",
+      "search_query": "360 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "hr.360.cn"
+      ],
+      "search_first_url": "https://hr.360.cn/hr/list",
+      "search_result_chars": 2363,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_8056051fb4d2b136.html",
+      "portal_sha256": "f2a69e93d4077f38c635d7c8ced1ef9470d5404d06d35003d1a9db36c6821dd8",
+      "coverage": "missing",
+      "complete_official_records": 0,
+      "selected_jd_ids": [],
+      "notes": "官网列表未见评测算法岗位；未取得完整JD。",
+      "recheck": "needs_recheck",
+      "recheck_sources": [
+        "https://360campus.zhiye.com/campus/jobs?shareId=92cfb7e8-2ae3-49dc-b960-cf7ce3c1a6c7&shareSource=2",
+        "https://cqut.cqbys.com/attachment/cqut/ueditor/file/20261012/7993_360%e9%9b%86%e5%9b%a22027%e7%a7%8b%e5%ad%a3%e6%a0%a1%e6%8b%9b.pdf"
+      ],
+      "recheck_result": "校招职位页与宣传PDF均未列评测算法岗；仍无合格评测JD。",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "科大讯飞",
+      "portal": "https://career.iflytek.com/",
+      "search_query": "科大讯飞 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "iflytek.zhiye.com"
+      ],
+      "search_first_url": "https://iflytek.zhiye.com/campus/detail?jobAdId=2abfe0c5-b9d0-4c59-8971-dde474e71869",
+      "search_result_chars": 13371,
+      "portal_http_status": null,
+      "portal_snapshot": null,
+      "portal_sha256": null,
+      "coverage": "covered",
+      "complete_official_records": 1,
+      "selected_jd_ids": [
+        "JD-25"
+      ],
+      "notes": "1条完整JD；AI研究院评测方向。",
+      "recheck": "",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "智谱",
+      "portal": "https://www.zhipuai.cn/zh/joinus",
+      "search_query": "智谱 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "zhipuai.cn",
+        "zhipu-ai.jobs.feishu.cn"
+      ],
+      "search_first_url": "https://www.zhipuai.cn/zh/joinus",
+      "search_result_chars": 15249,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_c8b9741264f99014.html",
+      "portal_sha256": "a459275889a7c1ff6b26ea8321a027b19599cabfbc4523ee3a6124705056e8e5",
+      "coverage": "covered",
+      "complete_official_records": 1,
+      "selected_jd_ids": [
+        "JD-20"
+      ],
+      "notes": "1条完整JD；GLM-Code Agent评测。另有截图Agent评测实习，身份未核验，不入主样本。",
+      "recheck": "",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "月之暗面",
+      "portal": "https://www.moonshot.cn/",
+      "search_query": "月之暗面 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "careers.kimi.com",
+        "moonshot.cn"
+      ],
+      "search_first_url": "https://careers.kimi.com/campus",
+      "search_result_chars": 5652,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_203f178a262aec09.html",
+      "portal_sha256": "2048a96017e257506973a9a0b48212118c9b2772acaf4926d1e58f7c7a4515a4",
+      "coverage": "missing",
+      "complete_official_records": 0,
+      "selected_jd_ids": [],
+      "notes": "检索到的Eval岗位为工程/产品方向，非评测算法；排除。",
+      "recheck": "verified_exclusion",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "MiniMax",
+      "portal": "https://www.minimaxi.com/careers",
+      "search_query": "MiniMax 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "minimaxi.com",
+        "vrfi1sk8a0.jobs.feishu.cn"
+      ],
+      "search_first_url": "https://vrfi1sk8a0.jobs.feishu.cn/379481/m/position/7655253685333936403/detail",
+      "search_result_chars": 14227,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_50799c3aebfd0c46.html",
+      "portal_sha256": "5eea9cedfaa1e98b04f16f70e37dd3933915486f4fc935a7344d28ed5e341081",
+      "coverage": "covered",
+      "complete_official_records": 1,
+      "selected_jd_ids": [
+        "JD-11"
+      ],
+      "notes": "1条完整JD；大模型算法评测实习。",
+      "recheck": "",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "DeepSeek",
+      "portal": "https://talent.deepseek.com/",
+      "search_query": "DeepSeek 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "talent.deepseek.com"
+      ],
+      "search_first_url": "https://talent.deepseek.com/",
+      "search_result_chars": 3886,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_3c1d133548317a32.html",
+      "portal_sha256": "f1eea6bb2ff536ef607ab9166077a11e39ab294f61b2692fb9249b4d737dee2d",
+      "coverage": "covered",
+      "complete_official_records": 1,
+      "selected_jd_ids": [
+        "JD-17"
+      ],
+      "notes": "1条招聘启事；仅深度学习研究员方向进入分析，未给出独立评测JD细节。",
+      "recheck": "",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "阶跃星辰",
+      "portal": "https://www.stepfun.com/about",
+      "search_query": "阶跃星辰 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "stepfun.com",
+        "app.mokahr.com"
+      ],
+      "search_first_url": "https://www.stepfun.com/step-5-preview",
+      "search_result_chars": 28474,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_0e4fbf39a3fe12b1.html",
+      "portal_sha256": "2f120933a93bc7c29821d8e744c057ba1177bd74a7673e1b96ded460c4a6913a",
+      "coverage": "covered",
+      "complete_official_records": 1,
+      "selected_jd_ids": [
+        "JD-19"
+      ],
+      "notes": "1条完整JD；大模型评测算法实习。",
+      "recheck": "",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "百川智能",
+      "portal": "https://www.baichuan-ai.com/",
+      "search_query": "百川智能 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "careers.baichuan-inc.com",
+        "cq6qe6bvfr6.jobs.feishu.cn"
+      ],
+      "search_first_url": "https://cq6qe6bvfr6.jobs.feishu.cn/646926/position/7676405896490273078/detail",
+      "search_result_chars": 5945,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_6f37bcf3cca7489d.html",
+      "portal_sha256": "dd80f98ac1aeb9c7cc3806916b9df3068b70bb8fcfda282d73663a29475016ee",
+      "coverage": "covered",
+      "complete_official_records": 1,
+      "selected_jd_ids": [
+        "JD-65"
+      ],
+      "notes": "1条完整JD；通用大模型算法，评测为相邻职责。",
+      "recheck": "",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "零一万物",
+      "portal": "https://www.01.ai/",
+      "search_query": "零一万物 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "01ai.jobs.feishu.cn",
+        "01.ai"
+      ],
+      "search_first_url": "https://01ai.jobs.feishu.cn/index/position/list",
+      "search_result_chars": 13031,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_c54563dc4f62d4ce.html",
+      "portal_sha256": "75330a70ac90db1405fbf57220e5894af765ac7c721b13778fba90d461daab5d",
+      "coverage": "missing",
+      "complete_official_records": 0,
+      "selected_jd_ids": [],
+      "notes": "只取得职位列表，未取得评测JD全文。",
+      "recheck": "needs_recheck",
+      "recheck_sources": [
+        "https://www.lingyiwanwu.com/careers.html",
+        "https://www.liepin.com/job/1978127835.shtml"
+      ],
+      "recheck_result": "官网只给职位入口；第三方转载为大模型数据科学家，非评测算法；仍无合格评测JD。",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "商汤",
+      "portal": "https://hr.sensetime.com/",
+      "search_query": "商汤 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "hr.sensetime.com"
+      ],
+      "search_first_url": "https://hr.sensetime.com/top-talent/",
+      "search_result_chars": 7114,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_01787e7d903262ac.html",
+      "portal_sha256": "cc4ccc7669cc7bafe042783acb4b703436c3a15c26b313738e02016d3e9bd31f",
+      "coverage": "covered",
+      "complete_official_records": 2,
+      "selected_jd_ids": [
+        "JD-21",
+        "JD-22"
+      ],
+      "notes": "2条完整JD；校招评测与AI PPT评测实习。",
+      "recheck": "",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "华为",
+      "portal": "https://career.huawei.com/",
+      "search_query": "华为 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "career.huawei.com"
+      ],
+      "search_first_url": "https://career.huawei.com/cn/campus-recruitment",
+      "search_result_chars": 21930,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_598f91cd9ccc6e34.html",
+      "portal_sha256": "3969ec03648ffac6dba755a384f9e96fa2ed99eae2f7108792c69e1ec7eef944",
+      "coverage": "missing",
+      "complete_official_records": 0,
+      "selected_jd_ids": [],
+      "notes": "只取得校招门户，未取得评测JD全文。",
+      "recheck": "needs_recheck",
+      "recheck_sources": [
+        "https://career.huawei.com/reccampportal/portal5/campus-recruitment-detail.html?jobId=30858&dataSource=1&jobType=1&recruitType=CR&sourceType=001"
+      ],
+      "recheck_result": "检索到端侧大模型岗位，非评测算法；仍无合格评测JD。",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "小米",
+      "portal": "https://hr.xiaomi.com/website/opportunities.html",
+      "search_query": "小米 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "hr.xiaomi.com",
+        "career.mi.com"
+      ],
+      "search_first_url": "https://hr.xiaomi.com/website/campus.html",
+      "search_result_chars": 17034,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_eedc8eb7246935d4.html",
+      "portal_sha256": "f04e4815def9a731b962c238a5b92e8de595db4dee9b351022777ec4e2c8c81d",
+      "coverage": "covered",
+      "complete_official_records": 4,
+      "selected_jd_ids": [
+        "JD-67",
+        "JD-68",
+        "JD-69",
+        "JD-70"
+      ],
+      "notes": "4条完整JD；MiMo后训练Agent、通用算法与具身算法，评测为相邻职责。",
+      "recheck": "",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "蔚来",
+      "portal": "https://intern.nio.com/",
+      "search_query": "蔚来 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "nio.jobs.feishu.cn"
+      ],
+      "search_first_url": "https://nio.jobs.feishu.cn/campus/position/7673027294877337866/detail",
+      "search_result_chars": 14714,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_5d5ad8abbf0b7cc6.html",
+      "portal_sha256": "2918af8ed151e4bdada7c96d71db057acb2f0a5eae759493f5c913ecb7cf3e39",
+      "coverage": "missing",
+      "complete_official_records": 0,
+      "selected_jd_ids": [],
+      "notes": "检索到的JD为AI推理引擎开发，非评测；排除。",
+      "recheck": "verified_exclusion",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "小鹏",
+      "portal": "https://xiaopeng.jobs.feishu.cn/",
+      "search_query": "小鹏 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "xiaopeng.jobs.feishu.cn"
+      ],
+      "search_first_url": "https://xiaopeng.jobs.feishu.cn/398875/position/7666022611709937961/detail",
+      "search_result_chars": 13557,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_15751e1c9928c709.html",
+      "portal_sha256": "a1e416a5e6fab34b44c9f577d7891d14fb3215c44a8b6368ba520321219d5d92",
+      "coverage": "missing",
+      "complete_official_records": 0,
+      "selected_jd_ids": [],
+      "notes": "检索到的JD为具身智能算法，非评测；排除。",
+      "recheck": "verified_exclusion",
+      "recheck_sources": [],
+      "recheck_result": "no recheck needed; historical evidence complete",
+      "checked_at": "2026-10-22"
+    },
+    {
+      "company": "理想汽车",
+      "portal": "https://www.lixiang.com/",
+      "search_query": "理想汽车 大模型 评测 算法 研究 实习 校招 社招",
+      "search_domains": [
+        "li.jobs.feishu.cn"
+      ],
+      "search_first_url": "https://li.jobs.feishu.cn/referral/campus/position/share/?token=NTsxNjU5MzU2Nzk4OTQ3OzcxMTQ4MTg0MDY3MDQ5NTUzOTM7NzEyNjgzMTI0NDA3NTE3NDE4MA",
+      "search_result_chars": 10783,
+      "portal_http_status": 200,
+      "portal_snapshot": "source_15981cea268eb8b8.html",
+      "portal_sha256": "773c19f95a5a1233371b4d2ff134d9b152ad7cb0c3fa929f064f96014507ffa5",
+      "coverage": "missing",
+      "complete_official_records": 0,
+      "selected_jd_ids": [],
+      "notes": "只取得内推落地页，未取得评测JD全文。",
+      "recheck": "needs_recheck",
+      "recheck_sources": [
+        "https://li.jobs.feishu.cn/referral/campus/position"
+      ],
+      "recheck_result": "只取得内推职位列表入口，无公开评测JD正文；保留为缺失。",
+      "checked_at": "2026-10-22"
+    }
+  ],
+  "missing_or_excluded_companies": [
+    "快手",
+    "拼多多",
+    "哔哩哔哩",
+    "携程",
+    "360",
+    "月之暗面",
+    "零一万物",
+    "华为",
+    "蔚来",
+    "小鹏",
+    "理想汽车"
+  ],
+  "provenance": {
+    "raw_document": "docs/JD_RAW.md",
+    "raw_sha256": "774bca901f2b5999443d0cd150437eeb13b2447a49c5976c506cd6131fd7eca8",
+    "corpus_sha256": "972aecb2aab6401e5745c551678e665493405a21f10b5f2903d1ddb34e9af664",
+    "research_run": "runs/20261022-jd-research",
+    "generator": "scripts/build_jd_artifacts.py",
+    "note": "runs/ is git-ignored; the manifest records hashes and URLs so JD_RAW.md remains the distributable source."
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-22",
+  "status": "planned; no training has been run",
+  "selection": {
+    "pool": 6973,
+    "dev": 500,
+    "samples_per_arm": 2048,
+    "length_strata": 10,
+    "token_tolerance": 0.01,
+    "seeds": [42, 43, 44],
+    "b1_weight": {"wrong": 1, "correct": 1},
+    "b2_weight": {"wrong": 3, "correct": 1}
+  },
+  "sft": {
+    "method": "BF16 LoRA",
+    "rank": 32,
+    "alpha": 64,
+    "dropout": 0.05,
+    "learning_rate": 0.0001,
+    "global_batch": 16,
+    "gpus": 4,
+    "per_device_batch": 1,
+    "gradient_accumulation": 4,
+    "cutoff_len": 4096,
+    "epochs": 1
+  },
+  "jobs": [
+    {"arm": "B1", "family": "8b", "base_model": "Qwen/Qwen3-8B-Base", "seed": 42, "status": "pending"},
+    {"arm": "B1", "family": "8b", "base_model": "Qwen/Qwen3-8B-Base", "seed": 43, "status": "pending"},
+    {"arm": "B1", "family": "8b", "base_model": "Qwen/Qwen3-8B-Base", "seed": 44, "status": "pending"},
+    {"arm": "B2", "family": "8b", "base_model": "Qwen/Qwen3-8B-Base", "seed": 42, "status": "pending"},
+    {"arm": "B2", "family": "8b", "base_model": "Qwen/Qwen3-8B-Base", "seed": 43, "status": "pending"},
+    {"arm": "B2", "family": "8b", "base_model": "Qwen/Qwen3-8B-Base", "seed": 44, "status": "pending"},
+    {"arm": "B1", "family": "4b", "base_model": "Qwen/Qwen3-4B-Base", "seed": 42, "status": "pending"},
+    {"arm": "B1", "family": "4b", "base_model": "Qwen/Qwen3-4B-Base", "seed": 43, "status": "pending"},
+    {"arm": "B1", "family": "4b", "base_model": "Qwen/Qwen3-4B-Base", "seed": 44, "status": "pending"},
+    {"arm": "B2", "family": "4b", "base_model": "Qwen/Qwen3-4B-Base", "seed": 42, "status": "pending"},
+    {"arm": "B2", "family": "4b", "base_model": "Qwen/Qwen3-4B-Base", "seed": 43, "status": "pending"},
+    {"arm": "B2", "family": "4b", "base_model": "Qwen/Qwen3-4B-Base", "seed": 44, "status": "pending"}
+  ],
+  "note": "Each job exports its own messages JSONL and LlamaFactory YAML; status is updated only after the H20 log/checkpoint is verified."
+}

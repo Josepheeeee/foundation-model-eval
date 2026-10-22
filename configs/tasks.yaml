@@ -1,0 +1,103 @@
+schema_version: 1
+# HF dataset revisions are resolved and recorded by `foundation-eval prepare`.
+# "record-at-prepare" means: never assume the moving `main` revision; store the
+# resolved commit/fingerprint in the run manifest and freeze it before test.
+tasks:
+  gsm8k:
+    name: GSM8K
+    dataset_id: openai/gsm8k
+    revision: record-at-prepare
+    config_name: main
+    train_split: train
+    test_split: test
+    native_metric: exact_match_final_answer
+    primary_protocol: completion
+    fewshot: 8
+    max_new_tokens: 512
+    sample_count: 7473
+    role: primary
+    notes: Primary capability for the SFT comparison. Official test is never used for diagnosis or selection.
+  svamp:
+    name: SVAMP
+    dataset_id: ChilleD/SVAMP
+    revision: record-at-prepare
+    config_name: default
+    train_split: null
+    test_split: test
+    native_metric: exact_match_final_answer
+    primary_protocol: completion
+    fewshot: 8
+    max_new_tokens: 512
+    sample_count: 1000
+    role: transfer
+    notes: Frozen cross-dataset transfer check only; never enters diagnosis or candidate selection.
+  mmlu_pro:
+    name: MMLU-Pro
+    dataset_id: TIGER-Lab/MMLU-Pro
+    revision: record-at-prepare
+    config_name: default
+    train_split: null
+    test_split: test
+    native_metric: exact_match_option
+    primary_protocol: completion
+    fewshot: 5
+    max_new_tokens: 512
+    sample_count: 12032
+    role: auxiliary
+    notes: Report native accuracy only; no composite with GSM8K.
+  bbh:
+    name: BIG-Bench Hard
+    dataset_id: lukaemon/bbh
+    revision: record-at-prepare
+    config_name: default
+    train_split: null
+    test_split: test
+    native_metric: task_exact_match
+    primary_protocol: completion
+    fewshot: 3
+    max_new_tokens: 512
+    sample_count: 6511
+    role: auxiliary
+    notes: 23 tasks; per-task native exact match, then macro average.
+  ifeval:
+    name: IFEval
+    dataset_id: google/IFEval
+    revision: record-at-prepare
+    config_name: default
+    train_split: null
+    test_split: train
+    native_metric: instruction_level_strict_accuracy
+    primary_protocol: completion
+    fewshot: 0
+    max_new_tokens: 1024
+    sample_count: 541
+    role: auxiliary
+    notes: Rule verifier only; unsupported instruction types are reported as unsupported, never passed.
+  humaneval_plus:
+    name: HumanEval+
+    dataset_id: evalplus/humanevalplus
+    revision: record-at-prepare
+    config_name: default
+    train_split: null
+    test_split: test
+    native_metric: pass_at_1_functional
+    primary_protocol: completion
+    fewshot: 0
+    max_new_tokens: 1024
+    sample_count: 164
+    role: auxiliary
+    notes: Functional correctness in a no-network container; pass@1 with one greedy sample.
+  ruler:
+    name: RULER fixed diagnostic
+    dataset_id: nvidia/RULER
+    revision: record-at-prepare
+    config_name: synthetic
+    train_split: null
+    test_split: diagnostic
+    native_metric: exact_match_needle
+    primary_protocol: completion
+    fewshot: 0
+    max_new_tokens: 256
+    sample_count: 450
+    role: diagnostic
+    notes: Local fixed-length generator for 4K/8K/16K; not an official RULER leaderboard submission.

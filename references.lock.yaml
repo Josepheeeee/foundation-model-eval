@@ -1,0 +1,61 @@
+schema_version: 1
+locked_at: '2026-10-22'
+repositories:
+  lm-evaluation-harness:
+    url: https://github.com/EleutherAI/lm-evaluation-harness.git
+    ref: HEAD-at-lock
+    commit: d6de81643928d653435c431bae19945d41d32520
+    license: MIT
+    use: upstream_reference_and_cross_check_for_gsm8k_mmlu_bbh_ifeval
+  LlamaFactory:
+    url: https://github.com/hiyouga/LlamaFactory.git
+    ref: HEAD-at-lock
+    commit: c683e59edd8f893abc5e1403184a1d0644817d2a
+    license: Apache-2.0
+    use: remote_lora_sft_execution
+  evalplus:
+    url: https://github.com/evalplus/evalplus.git
+    ref: HEAD-at-lock
+    commit: 26d6d00bb1fd0fa37f39c99d5290da67891d1c5e
+    license: Apache-2.0
+    use: humaneval_plus_tests_and_functional_correctness
+  RULER:
+    url: https://github.com/NVIDIA/RULER.git
+    ref: HEAD-at-lock
+    commit: c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a
+    license: Apache-2.0
+    use: long_context_task_definitions_reference
+datasets:
+  gsm8k:
+    id: openai/gsm8k
+    revision: record-at-prepare
+    license: MIT
+  svamp:
+    id: ChilleD/SVAMP
+    revision: record-at-prepare
+    license: MIT
+  mmlu-pro:
+    id: TIGER-Lab/MMLU-Pro
+    revision: record-at-prepare
+    license: MIT
+  bbh:
+    id: lukaemon/bbh
+    revision: record-at-prepare
+    license: MIT
+  ifeval:
+    id: google/IFEval
+    revision: record-at-prepare
+    license: Apache-2.0
+  humaneval-plus:
+    id: evalplus/humanevalplus
+    revision: record-at-prepare
+    license: Apache-2.0
+models:
+  primary:
+    id: Qwen/Qwen3-8B-Base
+    revision: record-at-serve
+    note: Record the exact HF revision and tokenizer revision in every run manifest.
+  replication:
+    id: Qwen/Qwen3-4B-Base
+    revision: record-at-serve
+    note: Only used to replicate GSM8K/SVAMP and the main robustness results.

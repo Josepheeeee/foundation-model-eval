@@ -1,0 +1,43 @@
+version: foundation-task-metrics-v1
+policy:
+  composite_score: forbidden
+  primary_scoring: deterministic_or_rule_verifier
+  llm_judge: auxiliary_error_analysis_only
+  unsupported_instruction: not_pass
+  missing_usage: unknown_not_zero
+metrics:
+  gsm8k:
+    name: exact_match_final_answer
+    extraction: last number after #### or last number in text; commas and trailing .0 normalized
+    denominator: all samples with status ok
+  svamp:
+    name: exact_match_final_answer
+    extraction: same as gsm8k
+    denominator: all samples with status ok
+  mmlu_pro:
+    name: exact_match_option
+    extraction: last option letter A-J; explicit "answer is X" preferred
+    denominator: all samples with status ok
+  bbh:
+    name: task_exact_match
+    extraction: option letter for multiple choice, otherwise normalized exact match
+    denominator: all samples with status ok; macro average across 23 tasks
+  ifeval:
+    name: instruction_level_strict_accuracy
+    extraction: deterministic rule verifier for supported instruction types
+    denominator: samples whose every instruction type is supported; unsupported is reported separately
+  humaneval_plus:
+    name: pass_at_1_functional
+    extraction: execute generated code against official tests
+    denominator: all samples with status ok; execution error is not a pass
+  ruler:
+    name: exact_match_needle
+    extraction: numeric/string exact match
+    denominator: all samples with status ok; synthetic diagnostic only
+protocols:
+  completion:
+    role: primary_comparable
+    note: same fixed few-shot prefix and generation parameters across B0/B1/B2
+  chat:
+    role: secondary_native
+    note: SFT model's native chat template; reported separately, never pooled with completion

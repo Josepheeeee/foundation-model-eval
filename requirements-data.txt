@@ -1,0 +1,4 @@
+# Data preparation stack; can be installed without torch/vLLM on a CPU host.
+datasets>=3,<5
+transformers>=4.46,<6
+huggingface-hub>=0.30,<2
