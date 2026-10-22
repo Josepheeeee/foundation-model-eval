@@ -10,7 +10,7 @@
 
 | 要求 | 状态 | 证据 |
 |---|---|---|
-| 独立目录/Git/依赖 | 已实现；Git 待初始化/推送 | 根目录、pyproject、.gitignore |
+| 独立目录/Git/依赖 | 已验证 | 根目录、pyproject、.gitignore；公开仓库 main |
 | 独立包名与入口 | 已验证 | `foundation_eval`、`foundation-eval` |
 | 八模块职责 | 已验证 | schema/data/agent/judge/selection/report/run/__init__ |
 | agent.py 改为被测模型适配 | 已验证 | 无工具/记忆；completion/chat、重试、usage；README 说明 |
@@ -79,7 +79,7 @@
 | 两项目 JD 原文/来源 | 已复制同一版本 | docs/JD_RAW.md、data/manifests/jd_sources.json |
 | 基座侧能力映射 | 已完成 | docs/JD_ANALYSIS.md |
 | 真实结果模板 | 已完成 | PREREGISTRATION/EXPERIMENTS；不预填 |
-| 上传 GitHub | 待执行 | 独立仓库 |
+| 上传 GitHub | 已完成 | 公开仓库 `Josepheeeee/foundation-model-eval`（main） |
 
 ## 阶段验收
 
@@ -89,4 +89,5 @@
 - [ ] 阶段3：B0 诊断 + B1/B2 选样 + 小步训练。
 - [ ] 阶段4：完整 LoRA（8B/4B × 3 种子）。
 - [ ] 阶段5：冻结 test、8B/4B 矩阵、统计与报告。
-- [ ] 阶段6：独立复现、公开结果、两项目推送。
+- [x] 阶段0：工程与两项目公开代码已推送。
+- [ ] 阶段6：H20 独立复现、真实结果与公开报告。

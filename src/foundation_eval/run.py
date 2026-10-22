@@ -230,10 +230,19 @@ def execute(args, config, tasks, models):
                     "task": "gsm8k", "split": "test", "prompt": row.get("question", ""),
                     "answer": row.get("answer", "")}))
             save_samples(processed("gsm8k", "test"), test)
+        test_samples = load_samples(processed("gsm8k", "test")) if processed("gsm8k", "test").exists() else []
         write_json(ROOT / "data/manifests/gsm8k.json",
-                   {"dev": len(splits["dev"]), "train": len(splits["train"]), "test": len(load_samples(processed("gsm8k", "test"))) if processed("gsm8k", "test").exists() else None,
+                   {"dev": len(splits["dev"]), "train": len(splits["train"]), "test": len(test_samples),
                     "dev_salt": config["dev_salt"], "input_sha256": file_digest(args.input),
                     "dataset_revision": "record-at-prepare; see run manifest"})
+        write_json(ROOT / "data/manifests/splits.json",
+                   {"schema_version": 1, "status": "prepared", "salt": config["dev_salt"],
+                    "dev": [s.sample_id for s in splits["dev"]],
+                    "train": [s.sample_id for s in splits["train"]],
+                    "test": [s.sample_id for s in test_samples],
+                    "dev_count": len(splits["dev"]), "train_count": len(splits["train"]),
+                    "test_count": len(test_samples),
+                    "note": "Official test is frozen for measurement only; it never enters diagnosis or selection."})
         print(json.dumps({"dev": len(splits["dev"]), "train": len(splits["train"])}))
         return
     if cmd == "ruler-build":
