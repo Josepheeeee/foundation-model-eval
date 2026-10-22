@@ -189,6 +189,7 @@ bash scripts/linux/validate_results.sh
 | 个人贡献与证据边界 | [CONTRIBUTIONS.md](docs/CONTRIBUTIONS.md) |
 | 项目记忆、已验证事实与限制 | [STATE.md](docs/STATE.md) |
 | JD 原文、来源清单与能力映射 | [JD_RAW.md](docs/JD_RAW.md)、[jd_sources.json](data/manifests/jd_sources.json)、[JD_ANALYSIS.md](docs/JD_ANALYSIS.md) |
+| JD 相似度与上游借鉴口径（含权重表） | [JD_SIMILARITY.md](docs/JD_SIMILARITY.md)、`python scripts/jd_similarity.py` |
 | 下一步操作 | [NEXT_STEPS.md](docs/NEXT_STEPS.md) |
 
 ## 仓库与许可

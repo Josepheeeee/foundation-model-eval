@@ -29,6 +29,7 @@
 - LlamaFactory 配置：8B/4B、B1/B2、种子 42/43/44；rank/alpha/dropout/lr/batch/len/epoch 固定；`dataset_info.json` 生成。
 - Windows 离线入口：setup/check/demo；Linux：基础/训练/推理安装、数据下载、vLLM 服务、四卡训练、merge、评测矩阵、结果校验。
 - `docs/JD_RAW.md` 与 `jd_sources.json` 复制同一版本；本项目的 `JD_ANALYSIS.md` 只写基座侧能力映射。
+- JD 相似度与借鉴口径：`scripts/jd_similarity.py` 按 `jd_review.json` 能力标签估算覆盖（70 条 0.43；主赛道 0.63；京东 JD-18 0.45），上游可归因代码约 289/2264 行（12.8%）；权重表与边界见 `docs/JD_SIMILARITY.md`。
 
 ## 验证记录
 
@@ -57,6 +58,7 @@
 - 没有人工失败案例复核，没有真实主终点差值/CI。
 - 数据污染检查不能证明预训练语料无污染；RULER 只是本地诊断，不是官方榜单。
 - `prepare_datasets.py` 依赖 HF 数据集字段；真实下载时若上游字段变化，必须修正并记录，不可静默丢弃样本。
+- JD 相似度依赖主观登记的深度权重，不是语义向量或人工双盲标注；借鉴比例按代码行估算，不含协议/数据/运行时依赖。
 
 ## 下一步
 
