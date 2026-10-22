@@ -48,7 +48,9 @@ def _bbh(sample: Sample, response: ModelResponse, metric: str) -> Score:
     marked = re.search(r"ANSWER:\s*(.+)", response.text, re.I)
     predicted = normalize_text(marked.group(1) if marked else response.text.splitlines()[-1] if response.text.strip() else "")
     target = normalize_text(expected)
-    return _score(sample, metric, predicted == target, detail={"predicted": predicted, "expected": target})
+    return _score(sample, metric, predicted == target,
+                  detail={"predicted": predicted, "expected": target,
+                          "subtask": sample.metadata.get("subtask", "unknown")})
 
 
 def _count_sentences(text: str) -> int:

@@ -21,12 +21,22 @@ def summarize(scores: list[Score], task: str):
     by_status = Counter(score.status for score in scores)
     decided = [s for s in scores if s.status == "ok" and s.correct is not None]
     correct = sum(bool(s.correct) for s in decided)
+    accuracy = correct / len(decided) if decided else None
+    subtasks = defaultdict(list)
+    for score in decided:
+        subtasks[str(score.detail.get("subtask", "unknown"))].append(bool(score.correct))
+    macro = None
+    if task == "bbh" and subtasks:
+        macro = float(np.mean([sum(values) / len(values) for values in subtasks.values()]))
     return {
         "task": task,
         "n": len(scores),
         "decided": len(decided),
         "correct": correct,
-        "accuracy": correct / len(decided) if decided else None,
+        "accuracy": accuracy,
+        "native_accuracy": macro if macro is not None else accuracy,
+        "macro_accuracy": macro,
+        "subtask_n": len(subtasks) if task == "bbh" else None,
         "wilson95": wilson_interval(correct, len(decided)) if decided else [None, None],
         "coverage": len(decided) / len(scores) if scores else None,
         "status": {status: by_status.get(status, 0) for status in STATUSES},
@@ -130,13 +140,14 @@ def make_report(run_dir: Path, output: Path | None = None):
     fmt = lambda value: "N/A" if value is None else f"{value:.3f}"
     lines = [f"# {title}", "",
              "Native metrics are reported per task. No composite score is computed.", "",
-             "| Task | Protocol | Model | Seed | N | Decided | Accuracy | 95% Wilson | Coverage |",
+             "| Task | Protocol | Model | Seed | N | Decided | Native accuracy | 95% Wilson | Coverage |",
              "|---|---|---|---|---:|---:|---:|---|---:|",
              f"| {summary['task']} | {manifest.get('protocol')} | {manifest.get('model_label')} | "
              f"{manifest.get('training_seed')} | {summary['n']} | {summary['decided']} | "
-             f"{fmt(summary['accuracy'])} | {fmt(summary['wilson95'][0])}–{fmt(summary['wilson95'][1])} | "
+             f"{fmt(summary['native_accuracy'])} | {fmt(summary['wilson95'][0])}–{fmt(summary['wilson95'][1])} | "
              f"{fmt(summary['coverage'])} |", "",
-             "## Status accounting", "", json.dumps(summary["status"], ensure_ascii=False), "",
+             "The Wilson interval is computed on decided samples. For BBH, the native metric is the macro average over subtasks; the interval is an overall-sample interval, not a macro interval.",
+             "", "## Status accounting", "", json.dumps(summary["status"], ensure_ascii=False), "",
              "## Cost", "", json.dumps(costs, ensure_ascii=False), "",
              "## Contamination check", "",
              json.dumps(manifest.get("contamination", {"status": "not recorded"}), ensure_ascii=False), "",
@@ -199,7 +210,7 @@ def eval_matrix(runs: list[Path], output: Path):
         summary = summarize(scores, manifest.get("task", "unknown"))
         rows.append({"run": run.name, "model": manifest.get("model_label"), "task": manifest.get("task"),
                      "protocol": manifest.get("protocol"), "seed": manifest.get("training_seed"),
-                     "status": manifest.get("status"), "n": summary["n"], "accuracy": summary["accuracy"],
+                     "status": manifest.get("status"), "n": summary["n"], "accuracy": summary["native_accuracy"],
                      "decided": summary["decided"], "protocol_signature": manifest.get("protocol_signature")})
     output.mkdir(parents=True, exist_ok=True)
     write_json(output / "matrix.json", rows)

@@ -1,4 +1,4 @@
-# 项目状态与开发记忆
+﻿# 项目状态与开发记忆
 
 更新时间：2026-10-22（Asia/Shanghai）。工程基座、离线闭环和实验协议已落地；真实数据、训练和模型评测仍待执行。
 
@@ -34,7 +34,7 @@
 
 | 检查 | 结果 |
 |---|---|
-| `pytest -q` | **17 passed**（2026-10-22 本机，Python 3.12，离线） |
+| `pytest -q` | **18 passed**（2026-10-22 本机，Python 3.12，离线） |
 | `foundation-eval check --offline` | 通过；缺数据被标为 pending，不伪造完成 |
 | `foundation-eval demo` | 8 条自制 GSM8K 风格样例 + 脚本响应；生成选样、评分、报告与图；明确 scripted/no benchmark |
 | 固定 dev 切分 | 1200 条合成数据上 500/700，重复运行一致、无重叠 |

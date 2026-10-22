@@ -152,6 +152,18 @@ def make_run(folder: Path, label: str, pattern: list[bool], seed=42, protocol="c
     return folder
 
 
+def test_bbh_uses_macro_average_not_sample_count():
+    from foundation_eval.report import summarize
+    scores = [Score(sample_id=f"a{i}", task="bbh", metric="task_exact_match", correct=True, status="ok", score=1.0,
+                    detail={"subtask": "A"}) for i in range(3)]
+    scores += [Score(sample_id="b0", task="bbh", metric="task_exact_match", correct=False, status="ok", score=0.0,
+                     detail={"subtask": "B"})]
+    result = summarize(scores, "bbh")
+    assert result["accuracy"] == 0.75
+    assert result["native_accuracy"] == 0.5
+    assert result["subtask_n"] == 2
+
+
 def test_report_keeps_unsupported_out_of_the_denominator(tmp_path):
     run = make_run(tmp_path / "run", "B0", [True, False, True])
     with (run / "scores.jsonl").open("a", encoding="utf-8") as handle:
