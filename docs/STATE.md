@@ -1,4 +1,4 @@
-﻿# 项目状态与开发记忆
+# 项目状态与开发记忆
 
 更新时间：2026-10-22（Asia/Shanghai）。工程基座、离线闭环和实验协议已落地；真实数据、训练和模型评测仍待执行。
 
@@ -43,6 +43,10 @@
 | RULER | 4K 固定种子生成一致；长度/任务注册拒绝非法值 |
 | LlamaFactory 配置 | rank32/lr1e-4/4 卡×1×4=16 全局 batch；8B/4B、三种子 |
 | 报告/比较 | 状态计数、unsupported 不入分母、配对 CI、协议不匹配拒绝 |
+
+## 仓库
+
+公开仓库：[Josepheeeee/foundation-model-eval](https://github.com/Josepheeeee/foundation-model-eval)（`main`，首个提交 `3a1480d`）。提交前已做凭证样式扫描；runs、数据、权重和 `.env` 不进入 Git。
 
 ## 当前限制
 

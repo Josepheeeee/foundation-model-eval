@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-22T07:21:07.958044+00:00",
+  "generated_at": "2026-10-22T07:25:27.353231+00:00",
   "scope": {
     "companies_checked": 30,
     "official_records_retrieved": 74,
@@ -851,7 +851,7 @@
   ],
   "provenance": {
     "raw_document": "docs/JD_RAW.md",
-    "raw_sha256": "774bca901f2b5999443d0cd150437eeb13b2447a49c5976c506cd6131fd7eca8",
+    "raw_sha256": "d48040dfb77949f2c84c2cda735306e5f41c50e7edf46fb5248efdaacaeab7a2",
     "corpus_sha256": "972aecb2aab6401e5745c551678e665493405a21f10b5f2903d1ddb34e9af664",
     "research_run": "runs/20261022-jd-research",
     "generator": "scripts/build_jd_artifacts.py",

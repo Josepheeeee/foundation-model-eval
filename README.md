@@ -185,6 +185,8 @@ bash scripts/linux/validate_results.sh
 | JD 原文、来源清单与能力映射 | [JD_RAW.md](docs/JD_RAW.md)、[jd_sources.json](data/manifests/jd_sources.json)、[JD_ANALYSIS.md](docs/JD_ANALYSIS.md) |
 | 下一步操作 | [NEXT_STEPS.md](docs/NEXT_STEPS.md) |
 
-## 许可与引用
+## 仓库与许可
 
-本仓库代码为 MIT。`external/` 上游源码不随仓库分发，按 `references.lock.yaml` 固定 commit 获取；各上游保留自己的许可。数据集的许可与使用条款以官方数据集页为准，运行前复核。模型权重不随仓库分发。
+公开仓库：[Josepheeeee/foundation-model-eval](https://github.com/Josepheeeee/foundation-model-eval)（`main`）。
+
+本仓库代码为 MIT。`external/` 上游源码不随仓库分发，按 `references.lock.yaml` 固定 commit 获取；各上游保留自己的许可。数据集的许可与使用条款以官方数据集页为准，运行前复核。模型权重不随仓库分发。真实训练/评测产物默认不提交；公开时另行脱敏并保留失败记录。
