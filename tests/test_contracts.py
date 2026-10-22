@@ -108,6 +108,10 @@ def test_scoring_native_tasks():
     scored = score_sample(choice, ModelResponse(sample_id="m1", model_label="m", protocol="completion",
                                                 text="B"), "exact_match_option")
     assert scored.correct is True
+    bbh = Sample(sample_id="b1", task="bbh", split="test", prompt="q", answer="no")
+    marked = score_sample(bbh, ModelResponse(sample_id="b1", model_label="m", protocol="completion",
+                                             text="Reasoning.\nANSWER: no"), "task_exact_match")
+    assert marked.correct is True
 
 
 def test_code_scoring_local_mode(monkeypatch):

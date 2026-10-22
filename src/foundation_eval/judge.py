@@ -45,7 +45,8 @@ def _bbh(sample: Sample, response: ModelResponse, metric: str) -> Score:
     expected = sample.answer.strip()
     if re.fullmatch(r"[A-J]", expected, re.I):
         return _choice(sample, response, metric)
-    predicted = normalize_text(response.text)
+    marked = re.search(r"ANSWER:\s*(.+)", response.text, re.I)
+    predicted = normalize_text(marked.group(1) if marked else response.text.splitlines()[-1] if response.text.strip() else "")
     target = normalize_text(expected)
     return _score(sample, metric, predicted == target, detail={"predicted": predicted, "expected": target})
 
@@ -126,6 +127,8 @@ def verify_instruction(text: str, instruction_id: str, kwargs: dict):
 def _ifeval(sample: Sample, response: ModelResponse, metric: str) -> Score:
     ids = sample.metadata.get("instruction_id_list") or []
     kwargs_list = sample.metadata.get("kwargs") or [{} for _ in ids]
+    if not ids:
+        return _score(sample, metric, None, "unsupported", {"reason": "no instruction_id_list"})
     if len(ids) != len(kwargs_list):
         return _score(sample, metric, None, "unsupported", {"reason": "instruction/kwargs length mismatch"})
     checks = []
