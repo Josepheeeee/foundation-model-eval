@@ -94,8 +94,11 @@ def assert_budget(config: dict, calls: int):
     if limit and calls > limit:
         raise ValueError(f"registered API budget exhausted: {calls} calls > {limit}")
     host = (os.getenv("TARGET_BASE_URL") or "").lower()
-    if host and not any(local in host for local in ("127.0.0.1", "localhost", "0.0.0.0")) and not limit:
+    remote = host and not any(local in host for local in ("127.0.0.1", "localhost", "0.0.0.0"))
+    if remote and not limit:
         raise ValueError("remote endpoint requires configs/experiment.yaml budget.max_calls before any call")
+    if remote and (budget.get("price_input_per_million") is None or budget.get("price_output_per_million") is None):
+        raise ValueError("remote endpoint requires input/output prices (0 is allowed) before any call")
 
 
 def new_run(kind: str, config: dict, task: str, split: str, protocol: str, model_label: str,
@@ -110,11 +113,15 @@ def new_run(kind: str, config: dict, task: str, split: str, protocol: str, model
                                            stderr=subprocess.DEVNULL).strip()
     except (subprocess.CalledProcessError, FileNotFoundError):
         git_head = "uncommitted"
+    contamination_path = ROOT / "data/manifests/contamination.json"
+    contamination = (json.loads(contamination_path.read_text(encoding="utf-8"))
+                     if contamination_path.exists() else {"status": "not run"})
     manifest = {"schema_version": 1, "kind": kind, "status": "running",
                 "created_utc": datetime.now(timezone.utc).isoformat(), "git_head": git_head,
                 "task": task, "split": split, "protocol": protocol, "model_label": model_label,
                 "training_seed": training_seed, "endpoint": endpoint, "protocol_signature": signature,
-                "data_hashes": data_hashes, "contamination": config.get("contamination", {"status": "not run"}),
+                "config": {"generation": config.get("generation", {})}, "source_hashes": code_hashes(),
+                "data_hashes": data_hashes, "contamination": contamination,
                 "not_a_benchmark": not_a_benchmark, "notes": notes,
                 "python": platform.python_version(),
                 "packages": {name: importlib.metadata.version(name) for name in ("pydantic", "httpx", "numpy", "PyYAML")
@@ -338,6 +345,15 @@ def check_workspace(config, tasks, offline=False):
             issues[f"test_data:{task}"] = []
         else:
             issues[f"test_data:{task}"] = [] if offline else ["missing; prepare before freezing"]
+    gsm_splits = {split: processed("gsm8k", split) for split in ("train", "dev", "test")}
+    if all(path.exists() for path in gsm_splits.values()):
+        split_samples = {split: load_samples(path, task="gsm8k") for split, path in gsm_splits.items()}
+        report = contamination_report(split_samples, fewshot_for("gsm8k"))
+        write_json(ROOT / "data/manifests/contamination.json", report)
+        issues["contamination"] = ([f"{key}={value}" for key, value in report["counts"].items() if value]
+                                   if any(report["counts"].values()) else [])
+    else:
+        issues["contamination"] = [] if offline else ["prepare GSM8K train/dev/test before checking"]
     selection = ROOT / "data/generated/selection/selection.json"
     if selection.exists():
         record = read(selection)

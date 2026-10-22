@@ -36,7 +36,8 @@ class ModelEndpoint:
         return cls(role, model, base, key)
 
     def public(self):
-        return {"role": self.role, "model": self.model, "base_url": self.base_url}
+        return {"role": self.role, "model": self.model, "base_url": self.base_url,
+                "revision": os.getenv("TARGET_REVISION", "unrecorded")}
 
 
 def format_completion(sample: Sample, fewshot: list[Sample], system_prompt: str) -> str:

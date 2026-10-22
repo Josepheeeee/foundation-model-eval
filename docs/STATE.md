@@ -18,7 +18,7 @@
 
 - 八个源码模块：`schema`、`data`、`agent`、`judge`、`selection`、`report`、`run`、`__init__`；`agent.py` 保留位置但职责是被测模型适配。
 - 固定 dev 留出、样本级哈希、训练/迁移/辅助/诊断任务清单、数据指纹占位与下载脚本。
-- 污染检查：精确 prompt hash、5-word shingle 近重复（Jaccard≥0.8）、同源 group 跨划分检查；明确“只检查可见数据”。
+- 污染检查：精确 prompt hash、5-word shingle 近重复（Jaccard≥0.8）、同源 group 跨划分检查；`check`在数据齐备时写入`data/manifests/contamination.json`并拒绝发现项；明确“只检查可见数据”。
 - 选样：长度分层、B1 随机、B2 层内错误加权、Efraimidis-Spirakis 无放回抽样、同层交换匹配 Token、B2 全池诊断门禁、重叠与预算记录。
 - 评分：GSM8K/SVAMP 数值、MMLU-Pro 选项、BBH 任务 exact match、IFEval 规则（unsupported 单独计）、HumanEval+ 受限执行、RULER 数值。
 - 提取核对脚本：读取固定 lm-eval 上游 GSM8K 任务的 `regex_pattern`，对每条本地 gold answer 与我们的提取逐样本比较；真实数据下载后执行。

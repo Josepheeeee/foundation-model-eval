@@ -95,6 +95,7 @@ bash scripts/linux/download_data.sh    # 数据指纹写入 data/manifests
 ```bash
 python scripts/fetch_references.py lm-evaluation-harness
 python scripts/check_upstream_gsm8k.py --answers data/raw/gsm8k_test.jsonl
+python -m foundation_eval.run check   # writes contamination.json; fails on exact/near/group findings
 ```
 
 ### 2. 基座诊断与 B1/B2 选样
@@ -156,7 +157,7 @@ bash scripts/linux/validate_results.sh
 
 ## 配置与预算
 
-商业 API 的模型 ID、端点、价格和预算在 `.env` 与 `configs/experiment.yaml` 的 `budget` 中运行前填写。远程端点未设置 `budget.max_calls` 时 CLI 直接停止；实际调用数、Token、耗时写入运行清单。服务端不返回 usage 时记为未知，不补零或伪造价格。
+商业 API 的模型 ID、端点、价格和预算在 `.env` 与 `configs/experiment.yaml` 的 `budget` 中运行前填写。远程端点未设置 `budget.max_calls` 或未填输入/输出价格（可填 0）时 CLI 直接停止；实际调用数、Token、耗时写入运行清单。服务端不返回 usage 时记为未知，不补零或伪造价格。
 
 ## 产物位置
 
